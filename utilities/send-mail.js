@@ -65,7 +65,7 @@ exports.send = (currentComment, parentComment)=> {
     let POST_URL = process.env.SITE_URL + currentComment.get('url') + '#' + currentComment.get('objectId');
     let SITE_URL = process.env.SITE_URL;
 
-    let _subject = process.env.MAIL_SUBJECT || '${PARENT_NICK},new @『${SITE_NAME}』';
+    let _subject = process.env.MAIL_SUBJECT || '${PARENT_NICK},new @ ${SITE_NAME}';
     let _template = process.env.MAIL_TEMPLATE || '<div style="border-top:2px solid #12ADDB;box-shadow:0 1px 3px #AAAAAA;line-height:180%;padding:0 15px 12px;margin:50px auto;font-size:12px;"><h2 style="border-bottom:1px solid #DDD;font-size:14px;font-weight:normal;padding:13px 0 10px 8px;">        Your comment @<a style="text-decoration:none;color: #12ADDB;" href="${SITE_URL}" target="_blank">            ${SITE_NAME}</a> had a new reply.</h2>    Dear ${PARENT_NICK},yours：<div style="padding:0 12px 0 12px;margin-top:18px"><div style="background-color: #f5f5f5;padding: 10px 15px;margin:18px 0;word-wrap:break-word;">            ${PARENT_COMMENT}</div><p><strong>${NICK}</strong> reply：</p><div style="background-color: #f5f5f5;padding: 10px 15px;margin:18px 0;word-wrap:break-word;">            ${COMMENT}</div><p><a style="text-decoration:none; color:#12addb" href="${POST_URL}" target="_blank">Click here,know more.</a> | <a style="text-decoration:none; color:#12addb" href="${SITE_URL}" target="_blank">${SITE_NAME}</a><br></p></div></div>';
     let emailSubject = eval('`' + _subject + '`');
     let emailContent = eval('`' + _template + '`');
